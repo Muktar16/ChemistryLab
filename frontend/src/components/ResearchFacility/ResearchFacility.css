@@ -1,0 +1,116 @@
+ 
+@import url("http://fonts.googleapis.com/css2?family=Lobster&display=swap");
+/* On screens that are less than 700px wide, make the sidebar into a topbar */
+ /* @media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+} 
+
+/* On screens that are less than 400px, display the bar vertically, instead of horizontally */
+ /* @media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}  */ 
+
+*{
+margin:0px;
+padding:0px;
+box-sizing: border-box;
+
+}
+
+.wrapper {
+width: 100%;
+min-height: 100vh;
+overflow: hidden;
+background-color: rgb(238, 237, 237);
+
+}
+
+.row{
+width: 100%;
+padding: 50px 100px;
+}
+
+.image-section{
+width: 30%;
+float: left;
+}
+
+.image-section img{
+width: 100%;
+height: 100%;
+border-radius: 5px;
+box-shadow: 10px 10px 5px #ccc;
+    -moz-box-shadow: 10px 10px 5px #ccc;
+    -webkit-box-shadow: 10px 10px 5px #ccc;
+    -khtml-box-shadow: 10px 10px 5px #ccc;
+
+
+}
+.content{
+width:60%;
+float: left;
+margin-left: 50px; 
+background-color: rgb(245, 247, 249);
+border-radius: 10px;
+}
+
+.content h1{
+font-size:70px;
+letter-spacing: 2px;
+margin-top:25px;
+color: #222;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+.content h2{
+font-size: 40px;
+font-family: 'Lobster', cursive;
+color: #8d8d46;
+margin-top: 25px;
+}
+
+.content p{
+font-size:20px;
+font-family:sans-serif;
+margin-top:10px;
+line-height: 1.5;
+color: #222;
+
+}
+
+@media screen and (max-width:768px){
+.image-section{
+width:100%;
+float: none;
+
+}
+.content{
+width:100%;
+float: none;
+margin-left: 0px;
+}
+
+.content h1{
+font-size:60px;
+letter-spacing: 2px;
+margin-top:30px;
+}
+.content h2{
+font-size:30px;
+}
+.content p{
+font-size:18px;
+}
+
+}
+

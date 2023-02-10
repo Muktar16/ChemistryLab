@@ -53,7 +53,7 @@ export default function AppbarComponent() {
 
                 <AppBar position="sticky" sx={{ background: '#457f8c' ,zIndex:1 }}>
                     <Toolbar variant="dense" sx={{ height: '115px' }}>
-                        <Avatar sx={{ height: '95px', width: '75px' }} alt="Logo" src="./logo2.png" variant="rounded" />
+                        <Avatar sx={{ height: '95px', width: '75px' }} alt="Logo" src="/logo_du.png" variant="rounded" />
                         <h1 className="logo-text">Chemistry<span>Lab</span><br />
                             <p className="logo-description">Natural Product Research Group</p>
                         </h1>

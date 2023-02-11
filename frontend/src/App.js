@@ -4,7 +4,7 @@ import AppbarComponent from './components/AppbarComponent/AppbarComponent';
 function App() {
   return (
     <React.Fragment>
-      <AppbarComponent></AppbarComponent>
+        <AppbarComponent/>
     </React.Fragment>
   );
 }

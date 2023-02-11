@@ -6,9 +6,13 @@ import AppDrawer from "../AppDrawer/AppDrawer";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { TabContext, TabPanel } from "@mui/lab";
-import Home from "../Home/Home";
-import About from "../About/About";
-import ResearchFacility from "../ResearchFacility/ResearchFacility";
+import Home from "../../pages/Home/Home";
+import About from "../../pages/About/About";
+import ResearchFacility from "../../pages/ResearchFacility/ResearchFacility";
+import { Link, Route, Routes } from "react-router-dom";
+import People from "../../pages/People/People";
+import Publications from "../../pages/Publications/Publications";
+
 
 
 export default function AppbarComponent() {
@@ -20,7 +24,6 @@ export default function AppbarComponent() {
     const [publicationsAnchorEl, setPublicationsAnchorEl] = useState(null);
     const openPeopleMenu = Boolean(peopleAnchorEl);
     const openPublicationsMenu = Boolean(publicationsAnchorEl);
-    const [peopleButtonValue,setPeopleButtonValue] = useState(null);
 
     const peopleHandleClick = (event) => {
         setPeopleAnchorEl(event.currentTarget);
@@ -28,8 +31,8 @@ export default function AppbarComponent() {
     const publicationsHandleClick = (event) => {
         setPublicationsAnchorEl(event.currentTarget);
     }
-    const peopleMenuHandleClose = (value) => {
-        setPeopleButtonValue(value)
+    const peopleMenuHandleClose = () => {
+        setValue("3")
         setPeopleAnchorEl(null);
     };
     const publicationMenuHandleClose = () => {
@@ -41,7 +44,7 @@ export default function AppbarComponent() {
         <React.Fragment>
             <TabContext value={value} >
                 <Menu anchorEl={peopleAnchorEl} open={openPeopleMenu} onClose={peopleMenuHandleClose} MenuListProps={{ 'aria-labelledby': 'people-button' }}>
-                    <MenuItem onClick={()=>peopleMenuHandleClose("3")}>Faculties</MenuItem>
+                    <MenuItem onClick={peopleMenuHandleClose}>Faculties</MenuItem>
                     <MenuItem onClick={peopleMenuHandleClose}>Graduates</MenuItem>
                     <MenuItem onClick={peopleMenuHandleClose}>Undergraduates</MenuItem>
                 </Menu>
@@ -60,22 +63,44 @@ export default function AppbarComponent() {
                         {isMatch ? (<AppDrawer></AppDrawer>) : (<>
                             <Tabs textColor="#2b2727" sx={{ paddingLeft: '40px', }} value={value} indicatorColor="secondary"
                                 onChange={(e, value) => { setValue(value); console.log("event", e) }}>
-                                <Tab label="HOME" value="1"/>
-                                <Tab label="ABOUT US" value="2"/>
-                                <Tab label="People"  id="people-button" onClick={peopleHandleClick} value={peopleButtonValue}/>
-                                <Tab label="PUBLICATIONS" value="4" id="publications-button" onClick={publicationsHandleClick} />
-                                <Tab label="RESEARCH FACILITIES" value="6" />
+                               
+                                <Tab label="HOME" value="1" component={Link} to={"/home"}/>
+                                <Tab label="ABOUT US" value="2" component={Link} to={"/about"}/>
+                                <Tab label="PEOPLE" value="3" component={Link} to={"/people"}/>
+                                <Tab label="PUBLICATIONS" value="4" component={Link} to={"/publicaitons"}/>
+                                 {/* <Tab 
+                                    label="People"  
+                                    id="people-button" 
+                                    onMouseEnter={peopleHandleClick}
+                                    //onClick={peopleHandleClick}
+                                    value="3"
+                                /> */}
+                                {/* <Tab 
+                                    label="PUBLICATIONS" 
+                                    value="4" 
+                                    id="publications-button" 
+                                    onMouseEnter={publicationsHandleClick}
+                                    //onClick={publicationsHandleClick} 
+                                    /> */}
+                                <Tab label="RESEARCH FACILITIES" value="6" component={Link} to={"/research"}/>
                             </Tabs>
                             <Button sx={{ marginLeft: 'auto ' }} variant="contained">Admin Login</Button>
                         </>)}
                     </Toolbar>
                 </AppBar>
-                <TabPanel value="1"><Home></Home></TabPanel>
+                <Routes>
+                    <Route exact path="/home" element={<Home></Home>}></Route>
+                    <Route exact path="/about" element={<About></About>}></Route>
+                    <Route exact path="/people" element={<People></People>}></Route>
+                    <Route exact path="/publicaitons" element={<Publications></Publications>}></Route>
+                    <Route exact path="/research" element={<ResearchFacility></ResearchFacility>}></Route>
+                </Routes>
+                {/* <TabPanel value="1"><Home></Home></TabPanel>
                 <TabPanel value="2"><About></About></TabPanel>
-                <TabPanel value="3"><ResearchFacility/></TabPanel>
-                <TabPanel value="4"><ResearchFacility/></TabPanel>
-                <TabPanel value="5"><ResearchFacility/></TabPanel>
-                <TabPanel value="6"><ResearchFacility/></TabPanel>
+                <TabPanel value="3">Faculties</TabPanel>
+                <TabPanel value="3">Graduates</TabPanel>
+                <TabPanel value="3">Undergrades</TabPanel>
+                <TabPanel value="6"><ResearchFacility/></TabPanel> */}
             </TabContext>
         </React.Fragment>
     );

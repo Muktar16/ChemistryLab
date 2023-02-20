@@ -5,9 +5,10 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import Faculties from '../../components/Faculties/Faculties';
-import Graduates from '../../components/Graduates/Graduates';
-import UnderGraduates from '../../components/UnderGraduate/UnderGraduate';
+import Books from '../../components/Books/Books';
+import Journals from '../../components/Journals/Journals';
+import Conferences from '../../components/Conferences/Conferences';
+
 
 export default function Publications() {
   const [value, setValue] = React.useState('1');
@@ -22,13 +23,13 @@ export default function Publications() {
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <TabList centered onChange={handleChange} aria-label="lab API tabs example">
             <Tab label="Books" value="1" />
-            <Tab label="Journels" value="2" />
+            <Tab label="Journals" value="2" />
             <Tab label="Conferences" value="3" />
           </TabList>
         </Box>
-        <TabPanel value="1"><Faculties></Faculties></TabPanel>
-        <TabPanel value="2"><Graduates></Graduates></TabPanel>
-        <TabPanel value="3"><UnderGraduates></UnderGraduates></TabPanel>
+        <TabPanel value="1"><Books></Books></TabPanel>
+        <TabPanel value="2"><Journals></Journals></TabPanel>
+        <TabPanel value="3"><Conferences></Conferences></TabPanel>
       </TabContext>
     </Box>
   );
